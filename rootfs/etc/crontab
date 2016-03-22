@@ -1,0 +1,16 @@
+#testing
+* * * * * root /scripts/snapshot.sh daily >> /var/log/cron.log 2>&1
+
+# low disk space alert, run daily at 8am
+0 8 * * * root /scripts/low-disk-space-alert.sh >> /var/log/cron.log 2>&1
+
+# run daily archive, daily at 9pm
+# 0 21 * * * root /scripts/snapshot.sh daily >> /var/log/cron.log 2>&1
+# run weekly archive, sunday at 9h30pm
+30 21 * * 7 root /scripts/snapshot.sh weekly >> /var/log/cron.log 2>&1
+# run monthly archive, every 1st of month at 10pm
+0 22 1 * * root /scripts/snapshot.sh monthly >> /var/log/cron.log 2>&1
+
+# run backup daily at 3h15am
+15 3 * * * root /scripts/backup.sh >> /var/log/cron.log 2>&1
+

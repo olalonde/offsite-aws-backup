@@ -1,0 +1,21 @@
+cron: &base
+  build: .
+  volumes:
+    - "./data:/data"
+  environment:
+    - PGHOST
+    - PGUSER
+    - PGPASSWORD
+    - DATABASE
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+
+backup_s3:
+  <<: *base
+  build: .
+  command: /scripts/backup-s3.sh
+
+backup_postgres:
+  <<: *base
+  build: .
+  command: /scripts/backup-postgres.sh
