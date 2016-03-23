@@ -1,0 +1,24 @@
+[Unit]
+Description=AWS backup script
+Requires=docker.service
+After=docker.service
+
+[Service]
+EnvironmentFile=/etc/offsite-aws-backup
+ExecStartPre=-/usr/bin/docker kill offsite-aws-backup
+ExecStartPre=-/usr/bin/docker rm offsite-aws-backup
+ExecStart=/usr/bin/docker run --rm \
+  -v /home/ubuntu/data:/data \
+  --name offsite-aws-backup \
+  --env PGHOST \
+  --env PGUSER \
+  --env PGPASSWORD \
+  --env AWS_ACCESS_KEY_ID \
+  --env AWS_SECRET_ACCESS_KEY \
+  --env DATABASE \
+  --env AWS_S3_BUCKET \
+  offsite-aws-backup
+ExecStop=/usr/bin/docker stop offsite-aws-backup
+
+[Install]
+WantedBy=multi-user.target
