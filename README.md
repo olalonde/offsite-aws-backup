@@ -47,7 +47,7 @@ EOF
 mkdir -p /home/ubuntu/data
 
 # Build image
-docker build -t offsite-aws-backup .
+make image
 
 # Install systemd unit file
 sudo cp offsite-aws-backup.service /lib/systemd/system/
