@@ -4,6 +4,9 @@ Offsite backups script for AWS RDS Postgresql and AWS s3.
 
 Currently only supports one bucket and one database.
 
+Does daily, weekly and monthly backups. Backup retention is 7 days, 4
+weeks and 12 months.
+
 ## Usage
 
 ## local / testing
