@@ -49,7 +49,11 @@ docker build -t offsite-aws-backup .
 # Install systemd unit file
 sudo cp offsite-aws-backup.service /lib/systemd/system/
 
-# Start systemd unit
+
+# Enable auto start on boot
+sudo systemctl enable offsite-aws-backup
+
+# Start unit
 sudo systemctl start offsite-aws-backup
 
 # Tail logs
