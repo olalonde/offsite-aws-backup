@@ -29,7 +29,7 @@ docker-compose up cron
 # docker-compose up backup_s3
 ```
 
-## systemd (for starting at boot)
+## systemd (for starting at boot, Linux only)
 
 ```bash
 # Configure
@@ -42,22 +42,14 @@ AWS_SECRET_ACCESS_KEY=aws-access-key-secret
 DATABASE=database-to-backup
 AWS_S3_BUCKET=bucket-to-backup
 EOF
+```
+
+make build
 
 # Data directory where backups are stored
 mkdir -p /home/ubuntu/data
 
-# Build image
-make image
-
-# Install systemd unit file
-sudo cp offsite-aws-backup.service /lib/systemd/system/
-
-
-# Enable auto start on boot
-sudo systemctl enable offsite-aws-backup
-
-# Start unit
-sudo systemctl start offsite-aws-backup
+make install
 
 # Tail logs
 journalctl -f -u offsite-aws-backup
