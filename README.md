@@ -42,7 +42,6 @@ AWS_SECRET_ACCESS_KEY=aws-access-key-secret
 DATABASE=database-to-backup
 AWS_S3_BUCKET=bucket-to-backup
 EOF
-```
 
 make build
 
