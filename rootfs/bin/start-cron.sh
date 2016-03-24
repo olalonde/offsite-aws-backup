@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -x
 mkdir -p /data/latest
 rsyslogd
 cron

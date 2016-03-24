@@ -14,6 +14,6 @@ RUN apt-get update \
 RUN wget -O get-pip.py https://bootstrap.pypa.io/get-pip.py
 RUN python get-pip.py
 RUN pip install awscli
-# TODO: aws s3 cli
 ADD rootfs /
+RUN chmod 600 /etc/crontab
 CMD /bin/start-cron.sh
