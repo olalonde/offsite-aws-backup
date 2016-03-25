@@ -1,3 +1,5 @@
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
 # low disk space alert, run every 30 minutes
 0,30 * * * * root /scripts/low-disk-space-alert.sh >> /var/log/cron.log 2>&1
 
