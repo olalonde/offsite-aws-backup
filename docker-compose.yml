@@ -11,12 +11,12 @@ cron: &base
     - DATABASE
     - AWS_S3_BUCKET
 
-#backup_s3:
-#<<: *base
-#build: .
-#command: /scripts/backup-s3.sh
-#
-#backup_postgres:
-#<<: *base
-#build: .
-#command: /scripts/backup-postgres.sh
+backup_s3:
+  <<: *base
+  build: .
+  command: /scripts/backup-s3.sh
+
+backup_postgres:
+  <<: *base
+  build: .
+  command: /scripts/backup-postgres.sh
