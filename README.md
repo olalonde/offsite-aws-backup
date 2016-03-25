@@ -43,12 +43,11 @@ DATABASE=database-to-backup
 AWS_S3_BUCKET=bucket-to-backup
 EOF
 
-make build
-
 # Data directory where backups are stored
 mkdir -p /home/ubuntu/data
 
-make install
+make build
+sudo make install
 
 # Tail logs
 journalctl -f -u offsite-aws-backup
