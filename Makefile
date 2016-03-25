@@ -9,5 +9,7 @@ install:
 	cp offsite-aws-backup.service /lib/systemd/system/
 	# Enable auto start on boot
 	sudo systemctl enable offsite-aws-backup
+	# Stop unit if it's already runnign
+	sudo systemctl stop offsite-aws-backup
 	# Start unit
 	sudo systemctl start offsite-aws-backup
